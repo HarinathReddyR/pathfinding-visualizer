@@ -1,0 +1,51 @@
+.Node {
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* font-size: 14px;  */
+    transition: background-color 0.5s ease; 
+  }
+  .Node.path {
+    background-color: yellow; 
+    }
+    
+    .Node.visited {  
+        animation: colorChange 0.8s forwards; 
+    }
+    
+    @keyframes colorChange {
+        0% {
+            width: 0;
+            height: 0; 
+            opacity: 1;
+            background-color: rgb(182, 243, 50); 
+        }
+        25% {
+            background-color: rgb(75, 219, 248);
+        }
+        50% {
+            background-color: rgb(41, 144, 234); 
+        }
+        75% {
+            background-color: rgb(59, 100, 247); 
+        }
+        100% {
+            width: 100%; 
+            height: 100%; 
+            opacity: 1;
+            background-color: rgb(32, 46, 247);
+        }
+    }
+  .Node.start {
+    background-color: green; 
+  }
+  
+  .Node.end {
+    background-color: red; 
+  }
+  
+  .Node.Wall {
+    background-color: white; 
+  }
+  
