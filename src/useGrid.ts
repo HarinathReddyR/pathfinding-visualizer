@@ -12,7 +12,8 @@ const initialNodes = Array.from({ length: ROWS }, (_, i) =>
       isEnd:(i==15 && j==20)?true:false,
       isVisited:false,
       isWall:(i==3&& j==8)?true:false,
-      isPath:false
+      isPath:false,
+      weight:1
     }))
   );
 
@@ -48,8 +49,12 @@ export const useGrid = () => {
       } else if (!endNode) {
         newGrid[row][col].isEnd = true;
         setEndNode({ row, col });
-      } else {
-        newGrid[row][col].isWall = !newGrid[row][col].isWall; 
+      } 
+      // else {
+      //   newGrid[row][col].isWall = !newGrid[row][col].isWall; 
+      // }
+      if (! newGrid[row][col].isStart && ! newGrid[row][col].isEnd) {
+        newGrid[row][col].weight = ( newGrid[row][col].weight === Infinity) ? 1 : ( newGrid[row][col].weight + 1) % 10; // Simple weight cycling
       }
       return newGrid;
     });

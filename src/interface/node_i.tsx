@@ -5,7 +5,8 @@ interface Node{
     isEnd:boolean,
     isWall:boolean,
     isVisited:boolean,
-    isPath:boolean
+    isPath:boolean,
+    weight:number
 }
 
 export default Node;

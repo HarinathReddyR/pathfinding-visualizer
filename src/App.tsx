@@ -6,6 +6,7 @@ import { useGrid } from './useGrid'
 import { bfs } from './algorithms/bfs'
 import { dfs } from './algorithms/dfs'
 import delay from './common/delay.ts'
+import { dijkstra } from './algorithms/dijkstra.ts'
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
         path=await dfs(grid, startNode, endNode,setGrid);
       }else if(algorithm=='bfs'){
         path = await bfs(grid, startNode, endNode, setGrid);
+      }else if(algorithm=='dijkstra'){
+        path = await dijkstra(grid, startNode, endNode, setGrid);
       }
       for (const node of path) {
         grid[node.row][node.col].isPath = true; 
@@ -42,7 +45,8 @@ function App() {
               isVisited:false, 
               isPath: false, 
               isStart: cell.isStart, 
-              isEnd: cell.isEnd 
+              isEnd: cell.isEnd ,
+              weight:1
           }))
       );
   });
